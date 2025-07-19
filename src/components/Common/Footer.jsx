@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo/Logo-Full-Light.png";
 
 // Icons
-import { FaFacebook, FaGoogle, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter} from "react-icons/fa";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
 const Resources = [
@@ -175,6 +176,7 @@ const Footer = () => {
           <div className="text-center">Made with ❤️ Shrikant © 2025 Studynotion</div>
         </div>
       </div>
+      <ScrollToTopButton/>
     </div>
   );
 };
