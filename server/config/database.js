@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-console.log("MONGO URI =", process.env.MONGODB_URL);
+// console.log("MONGO URI =", process.env.MONGODB_URL);
 
 exports.connect = async () => {
   try {
