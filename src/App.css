@@ -7,14 +7,11 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
 * {
   scrollbar-width: auto;
   scrollbar-color: #afb2bf;
 }
 
-/* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 3px;
 }
@@ -35,7 +32,6 @@ body {
   visibility: visible;
 }
 
-/* Hide default styling of details/summary */
 details > summary {
   list-style: none;
 }
@@ -43,7 +39,6 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
-/* https://10015.io/tools/css-loader-generator */
 .spinner {
   width: 56px;
   height: 56px;
@@ -199,7 +194,6 @@ details > summary::-webkit-details-marker {
   }
 }
 
-/* For conditional coloring of icons in dashboard sidebar */
 .active-icon {
   fill: #ffd60a !important;
   color: #ffd60a !important;
@@ -210,7 +204,6 @@ details > summary::-webkit-details-marker {
   color: #838894;
 }
 
-/* Buttons */
 .yellowButton {
   @apply cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900;
 }

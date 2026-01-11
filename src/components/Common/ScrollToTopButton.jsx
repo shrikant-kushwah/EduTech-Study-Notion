@@ -4,7 +4,6 @@ import { FaArrowUp } from "react-icons/fa";
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Check scroll position to toggle button visibility
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.pageYOffset;
@@ -13,11 +12,9 @@ const ScrollToTopButton = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup event listener on unmount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll the window to top smoothly
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

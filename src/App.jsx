@@ -45,7 +45,6 @@ function App() {
       const token = JSON.parse(localStorage.getItem("token"))
       dispatch(getUserDetails(token, navigate))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -57,7 +56,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="courses/:courseId" element={<CourseDetails />} />
         <Route path="catalog/:catalogName" element={<Catalog />} />
-        {/* Open Route - for Only Non Logged in User */}
         <Route
           path="login"
           element={
@@ -98,7 +96,6 @@ function App() {
             </OpenRoute>
           }
         />
-        {/* Private Route - for Only Logged in User */}
         <Route
           element={
             <PrivateRoute>
@@ -106,10 +103,8 @@ function App() {
             </PrivateRoute>
           }
         >
-          {/* Route for all users */}
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/Settings" element={<Settings />} />
-          {/* Route only for Instructors */}
           {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
             <>
               <Route path="dashboard/instructor" element={<Instructor />} />
@@ -121,7 +116,6 @@ function App() {
               />
             </>
           )}
-          {/* Route only for Students */}
           {user?.accountType === ACCOUNT_TYPE.STUDENT && (
             <>
               <Route
@@ -134,7 +128,6 @@ function App() {
           <Route path="dashboard/settings" element={<Settings />} />
         </Route>
 
-        {/* For the watching course lectures */}
         <Route
           element={
             <PrivateRoute>
@@ -151,8 +144,6 @@ function App() {
             </>
           )}
         </Route>
-
-        {/* 404 Page */}
         <Route path="*" element={<Error />} />
       </Routes>
     </div>

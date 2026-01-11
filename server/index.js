@@ -15,13 +15,13 @@ const cors = require("cors");
 const { cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
 
-// Port
+
+
 const PORT = process.env.PORT || 4000;
 
-// DB connection
 database.connect();
 
-// Middlewares
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -39,17 +39,15 @@ app.use(
   })
 );
 
-// Cloudinary
+
 cloudinaryConnect();
 
-// Routes
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/reach", contactUsRoute);
 
-// Health check
 app.get("/", (req, res) => {
   res.json({
     success: true,
@@ -57,7 +55,7 @@ app.get("/", (req, res) => {
   });
 });
 
-// Start server
+
 app.listen(PORT, () => {
   console.log(`App is listening at ${PORT}`);
 });

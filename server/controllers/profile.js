@@ -6,7 +6,9 @@ const User = require("../models/User")
 const { uploadImageToCloudinary } = require("../utils/imageUploader")
 const mongoose = require("mongoose")
 const { convertSecondsToDuration } = require("../utils/secToDuration")
-// Method for updating a profile
+
+
+
 exports.updateProfile = async (req, res) => {
   try {
     const {
@@ -17,9 +19,9 @@ exports.updateProfile = async (req, res) => {
       contactNumber = "",
       gender = "",
     } = req.body
+
     const id = req.user.id
 
-    // Find the profile by id
     const userDetails = await User.findById(id)
     const profile = await Profile.findById(userDetails.additionalDetails)
 
@@ -29,16 +31,13 @@ exports.updateProfile = async (req, res) => {
     })
     await user.save()
 
-    // Update the profile fields
     profile.dateOfBirth = dateOfBirth
     profile.about = about
     profile.contactNumber = contactNumber
     profile.gender = gender
 
-    // Save the updated profile
     await profile.save()
 
-    // Find the updated user details
     const updatedUserDetails = await User.findById(id)
       .populate("additionalDetails")
       .exec()
@@ -68,7 +67,6 @@ exports.deleteAccount = async (req, res) => {
         message: "User not found",
       })
     }
-    // Delete Assosiated Profile with the User
     await Profile.findByIdAndDelete({
       _id: new mongoose.Types.ObjectId(user.additionalDetails),
     })
@@ -79,7 +77,6 @@ exports.deleteAccount = async (req, res) => {
         { new: true }
       )
     }
-    // Now Delete User
     await User.findByIdAndDelete({ _id: id })
     res.status(200).json({
       success: true,
@@ -182,7 +179,6 @@ exports.getEnrolledCourses = async (req, res) => {
       if (SubsectionLength === 0) {
         userDetails.courses[i].progressPercentage = 100
       } else {
-        // To make it up to 2 decimal point
         const multiplier = Math.pow(10, 2)
         userDetails.courses[i].progressPercentage =
           Math.round(
@@ -217,12 +213,10 @@ exports.instructorDashboard = async (req, res) => {
       const totalStudentsEnrolled = course.studentsEnroled.length
       const totalAmountGenerated = totalStudentsEnrolled * course.price
 
-      // Create a new object with the additional fields
       const courseDataWithStats = {
         _id: course._id,
         courseName: course.courseName,
         courseDescription: course.courseDescription,
-        // Include other course properties as needed
         totalStudentsEnrolled,
         totalAmountGenerated,
       }
